@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("war")
 }
 
 group = "org.example"
@@ -22,8 +23,16 @@ dependencies {
 
     implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("org.postgresql:postgresql:42.7.7")
+
+    implementation("org.springframework:spring-webmvc:6.2.7")
+    implementation("jakarta.servlet:jakarta.servlet-api:6.0.0")
+    implementation("javax.servlet:jstl:1.2") // JSTL
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
 }
